@@ -13,6 +13,7 @@ angular.module('myApp.view2', ['ngRoute'])
 		function($scope, $location, authenticatedUserService, authenticationService, serverCallService) {
 
 			$scope.user = authenticatedUserService.getUser();
+			$scope.googleClientID = authenticationService.getGoogleClientID();
 
 			$scope.logout = function() {
 				authenticationService.logout();
@@ -23,18 +24,14 @@ angular.module('myApp.view2', ['ngRoute'])
 				$location.url('/');
 			}
 
-			$scope.$on('event:google-plus-signin-success', function (event,authResult) {
-			    // Send login to server
-			    console.log('success');
-			    console.log(authResult);
 
+			$scope.$on('event:google-plus-signin-success', function (event,authResult) {
+			    console.log('Google sign-in successful. ');
 			    serverCallService.makePost("rest/link/google?token=" + authResult.id_token, {}, googleLinkingSuccess, googleLinkingFail);
 			});
 
 			$scope.$on('event:google-plus-signin-failure', function (event,authResult) {
-			    // Auth failure or signout detected
-			    console.log('fail');
-			    console.log(authResult);
+			    console.log('Google sign-in failed or sign-out detected. ');
 			});
 
             function googleLinkingSuccess(data) {
@@ -43,7 +40,6 @@ angular.module('myApp.view2', ['ngRoute'])
                 } else {
                 	authenticatedUserService.setAuthenticatedUser(data);
                     $scope.user = data.user;
-                    console.log(data);
                 }
             }
 

@@ -16,23 +16,18 @@ angular.module('myApp.view1', ['ngRoute'])
             $scope.validation = {
                 error: {}
             };
-
             $scope.mobileIdChallenge = false;
 
-            // serverCallService.makeGet("rest/user?username=mati.maasikas", {}, success, fail);
+            $scope.googleClientID = authenticationService.getGoogleClientID();
 
-            function success(user) {
-                if (user === undefined || user.length < 1) {
-                    console.log('No data returned by getting user.');
+            $scope.$on('event:google-plus-signin-success', function (event,authResult) {
+                console.log('Google sign-in successful. ');
+                authenticationService.loginWithGoogle(authResult.id_token);
+            });
 
-                } else {
-                    console.log(user);
-                }
-            }
-
-            function fail() {
-                console.log('Getting user failed');
-            }
+            $scope.$on('event:google-plus-signin-failure', function (event,authResult) {
+                console.log('Google sign-in failed or sign-out detected. ');
+            });
 
             $scope.idCardAuth = function() {
                 authenticationService.loginWithIdCard();

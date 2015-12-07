@@ -5,6 +5,7 @@ angular.module('myApp.services.authenticationService', []).
         function($location, $rootScope, serverCallService, authenticatedUserService, alertService) {
 
             var LOGIN_ORIGIN = "loginOrigin"; 
+            var GOOGLE_CLIENT_ID = '609780541620-0d2pkdl0gg8pkv98l76ei2tkh92kd1rp.apps.googleusercontent.com';
 
             var instance;
             var isAuthenticationInProgress;
@@ -102,6 +103,10 @@ angular.module('myApp.services.authenticationService', []).
 
             return {
 
+                getGoogleClientID : function() {
+                    return GOOGLE_CLIENT_ID;
+                },
+
                 logout : function() {              
                     serverCallService.makePost("rest/logout", {}, logoutSuccess, logoutFail);
                 },
@@ -146,6 +151,13 @@ angular.module('myApp.services.authenticationService', []).
                 
                     disableLogin();
                     serverCallService.makeGet("rest/login/mobileId", params, loginWithMobileIdSuccess, loginFail);
+                },
+
+                loginWithGoogle : function(token) {
+                    var params = {
+                        "token": token
+                    }
+                    serverCallService.makeGet("rest/login/google", params, loginSuccess, loginFail);
                 }
 
             };
