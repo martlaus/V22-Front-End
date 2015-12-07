@@ -12,6 +12,8 @@ angular.module('myApp.view1', ['ngRoute'])
     .controller('View1Ctrl', ['$scope', 'serverCallService', '$route', '$rootScope', '$location', 'authenticatedUserService',
         function ($scope, serverCallService, $route, $rootScope, $location, authenticatedUserService) {
 
+            $scope.mobileIdChallenge = false;
+
             serverCallService.makeGet("http://localhost:7070/rest/user?username=mati.maasikas", {}, success, fail);
 
             function success(user) {
