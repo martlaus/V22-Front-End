@@ -1,5 +1,8 @@
-<p>This is the partial for view 2.</p>
-<p>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</p>
+<div class="row">
+    <div class="col-md-12 text-center" data-ng-if="user">
+        <h4> Welcome, {{user.username}}! (<a href="" data-ng-click="logout()">log out</a>)</h4>
+    </div>
+     <div class="col-md-12 text-center" data-ng-if="!user">
+        <h4> You are not logged in, <a href="" data-ng-click="goToLandingPage()"> go back</a>.</h4>
+    </div>
+</div>

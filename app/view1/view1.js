@@ -14,7 +14,7 @@ angular.module('myApp.view1', ['ngRoute'])
 
             $scope.mobileIdChallenge = false;
 
-            serverCallService.makeGet("rest/user?username=mati.maasikas", {}, success, fail);
+            // serverCallService.makeGet("rest/user?username=mati.maasikas", {}, success, fail);
 
             function success(user) {
                 if (user === undefined || user.length < 1) {

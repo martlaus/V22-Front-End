@@ -4,6 +4,8 @@ angular.module('myApp.services.authenticationService', []).
     factory('authenticationService',['$location', '$rootScope', 'serverCallService', 'authenticatedUserService', 'alertService',
         function($location, $rootScope, serverCallService, authenticatedUserService, alertService) {
 
+            var LOGIN_ORIGIN = "loginOrigin"; 
+
             var instance;
             var isAuthenticationInProgress;
             var isOAuthAuthentication = false;
@@ -18,12 +20,15 @@ angular.module('myApp.services.authenticationService', []).
                 } else {
                     authenticatedUserService.setAuthenticatedUser(authenticatedUser);
 
-                    if (authenticatedUser.firstLogin) {
-                        $location.url('/' + authenticatedUser.user.username);
-                    } else if (isOAuthAuthentication) {
-                    	var url = localStorage.getItem(LOGIN_ORIGIN);
-                    	$location.url(url);
-                    }
+                    // if (authenticatedUser.firstLogin) {
+                    //     $location.url('/' + authenticatedUser.user.username);
+                    // } else if (isOAuthAuthentication) {
+                    // 	var url = localStorage.getItem(LOGIN_ORIGIN);
+                    // 	$location.url(url);
+                    // }
+
+                    // overriding redirect for now
+                    $location.url('/view2');
 
                     enableLogin();
                     localStorage.removeItem(LOGIN_ORIGIN);
