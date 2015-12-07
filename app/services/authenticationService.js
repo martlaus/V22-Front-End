@@ -130,7 +130,7 @@ angular.module('myApp.services.authenticationService', []).
                 	isOAuthAuthentication = true;
                 },
 
-                loginWithMobileId : function(phoneNumber, idCode, language, successCallback, failCallback, challengeReceivedCallback) {
+                loginWithMobileId : function(phoneNumber, idCode, successCallback, failCallback, challengeReceivedCallback) {
                     if (isAuthenticationInProgress) {
                         return;
                     }
@@ -141,8 +141,7 @@ angular.module('myApp.services.authenticationService', []).
 
                     var params = {
                         'phoneNumber': phoneNumber,
-                        'idCode': idCode,
-                        'language': language
+                        'idCode': idCode
                     };
                 
                     disableLogin();

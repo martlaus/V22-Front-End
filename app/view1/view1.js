@@ -12,6 +12,11 @@ angular.module('myApp.view1', ['ngRoute'])
     .controller('View1Ctrl', ['$scope', 'serverCallService', '$route', '$rootScope', '$location', 'authenticatedUserService', 'authenticationService',
         function ($scope, serverCallService, $route, $rootScope, $location, authenticatedUserService, authenticationService) {
 
+            $scope.mobileId = {};
+            $scope.validation = {
+                error: {}
+            };
+
             $scope.mobileIdChallenge = false;
 
             // serverCallService.makeGet("rest/user?username=mati.maasikas", {}, success, fail);
@@ -39,8 +44,7 @@ angular.module('myApp.view1', ['ngRoute'])
                 var phoneNumberValid = validatePhoneNumber();
 
                 if (idCodeValid && phoneNumberValid) {
-                    language = translationService.getLanguage();
-                    authenticationService.loginWithMobileId($scope.mobileId.phoneNumber, $scope.mobileId.idCode, language,
+                    authenticationService.loginWithMobileId($scope.mobileId.phoneNumber, $scope.mobileId.idCode,
                     mobileIdSuccess, mobileIdFail, mobileIdReceiveChallenge);
                 }
             };
@@ -110,7 +114,7 @@ angular.module('myApp.view1', ['ngRoute'])
                 var secondWeights = [3, 4, 5, 6, 7, 8, 9, 1, 2, 3];
 
                 var firstSum = 0;
-                for (i = 0; i < 10; i++) {
+                for (var i = 0; i < 10; i++) {
                     firstSum += idCode.charAt(i) * firstWeights[i];
                 }
 
@@ -135,5 +139,17 @@ angular.module('myApp.view1', ['ngRoute'])
                 } else {
                     return false;
                 }
+            }
+
+            function isEmpty(str) {
+                if (!str || str === undefined) {
+                    return true;
+                }
+                
+                if (typeof str != 'String') {
+                    return false;
+                }
+                
+                return str.trim().length === 0;
             }
         }]);
