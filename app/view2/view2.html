@@ -6,3 +6,33 @@
         <h4> You are not logged in, <a href="" data-ng-click="goToLandingPage()"> go back</a>.</h4>
     </div>
 </div>
+
+<div class="container" data-ng-if="user">
+    <div class="row">
+
+        <div class="col-sm-6" data-ng-if="!user.googleID">
+            <a class="btn btn-dark btn-lg btn-block">
+                <i class="fa fa-google-plus"></i> Link with Google
+            </a>
+        </div>
+
+        <div class="col-sm-6" data-ng-if="user.googleID">
+            <a class="btn btn-dark btn-lg btn-block">
+                <i class="fa fa-google-plus"></i> You have linked with Google
+            </a>
+        </div>
+
+        <div class="col-sm-6">
+            <a class="btn btn-dark btn-lg btn-block">
+                <i class="fa fa-facebook-square"></i>Link with Facebook
+            </a>
+        </div>
+
+        <div class="col-sm-6" data-ng-if="false">
+            <a class="btn btn-dark btn-lg btn-block">
+                <i class="fa fa-facebook-square"></i>You have linked with Facebook
+            </a>
+        </div>
+
+    </div>
+</div>
