@@ -5,6 +5,8 @@ angular.module('myApp.services.serverCallService', []).
     factory('serverCallService', ["services", "$http", "$location", "authenticatedUserService",
         function (services, $http, $location, authenticatedUserService) {
 
+            var instance;
+            
             return {
                 makePost: function (url, data, successCallback, errorCallback) {
                     var headers = {};
