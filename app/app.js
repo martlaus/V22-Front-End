@@ -7,13 +7,12 @@ angular
         'myApp.view1',
         'myApp.view2',
         'myApp.version',
-        'myApp.services'
-
+        'myApp.services',
+        'directive.g+signin'
     ])
     .config(['$routeProvider',
         '$locationProvider',
         '$httpProvider',
         function ($routeProvider, $locationProvider, $httpProvider) {
             $routeProvider.otherwise({redirectTo: '/view1'});
-
-        }]);
+    }]);

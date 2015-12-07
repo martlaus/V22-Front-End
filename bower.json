@@ -12,6 +12,10 @@
     "angular-mocks": "~1.4.0",
     "html5-boilerplate": "~5.2.0",
     "bootstrap": "~3.3.6",
-    "angular-bootstrap": "~0.14.3"
+    "angular-bootstrap": "~0.14.3",
+    "angular-directive.g-signin": "~0.1.1"
+  },
+  "resolutions": {
+    "angular": "~1.4.0"
   }
 }

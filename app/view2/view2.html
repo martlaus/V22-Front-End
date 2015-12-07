@@ -11,9 +11,11 @@
     <div class="row">
 
         <div class="col-sm-6" data-ng-if="!user.googleID">
-            <a class="btn btn-dark btn-lg btn-block">
-                <i class="fa fa-google-plus"></i> Link with Google
-            </a>
+            <span class="btn btn-dark btn-lg btn-block">
+                <i class="fa fa-google-plus"></i> Link with Google <br />
+                <google-plus-signin clientid="609780541620-0d2pkdl0gg8pkv98l76ei2tkh92kd1rp.apps.googleusercontent.com"></google-plus-signin>
+            </span>
+            
         </div>
 
         <div class="col-sm-6" data-ng-if="user.googleID">
