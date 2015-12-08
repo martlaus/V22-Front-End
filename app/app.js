@@ -8,7 +8,8 @@ angular
         'myApp.view2',
         'myApp.version',
         'myApp.services',
-        'directive.g+signin'
+        'directive.g+signin',
+        'myApp.facebook'
     ])
     .config(['$routeProvider',
         '$locationProvider',

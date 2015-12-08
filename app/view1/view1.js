@@ -9,8 +9,8 @@ angular.module('myApp.view1', ['ngRoute'])
         });
     }])
 
-    .controller('View1Ctrl', ['$scope', 'serverCallService', '$route', '$rootScope', '$location', 'authenticatedUserService', 'authenticationService',
-        function ($scope, serverCallService, $route, $rootScope, $location, authenticatedUserService, authenticationService) {
+    .controller('View1Ctrl', ['$scope', 'serverCallService', '$route', '$rootScope', '$location', 'authenticatedUserService', 'authenticationService', 'Facebook', 
+        function ($scope, serverCallService, $route, $rootScope, $location, authenticatedUserService, authenticationService, Facebook) {
 
             $scope.mobileId = {};
             $scope.validation = {
@@ -147,4 +147,35 @@ angular.module('myApp.view1', ['ngRoute'])
                 
                 return str.trim().length === 0;
             }
+
+
+            $scope.facebookAuth = function() {
+                // From now on you can use the Facebook service just as Facebook api says
+                Facebook.login(function(response) {
+                    console.log('Login done.');
+                    console.log(response);
+
+                    authenticationService.loginWithFacebook(response.authResponse.accessToken);
+                });
+            };
+
+            $scope.getLoginStatus = function() {
+                Facebook.getLoginStatus(function(response) {
+                    if(response.status === 'connected') {
+                        $scope.loggedIn = true;
+                        console.log('connected');
+                    } else {
+                        $scope.loggedIn = false;
+                        console.log('not connected');
+                    }
+                });
+            };
+
+            $scope.me = function() {
+                Facebook.api('/me', function(response) {
+                    $scope.user = response;
+                    console.log('user');
+                });
+            };
+
         }]);

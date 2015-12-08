@@ -13,7 +13,8 @@
     "html5-boilerplate": "~5.2.0",
     "bootstrap": "~3.3.6",
     "angular-bootstrap": "~0.14.3",
-    "angular-directive.g-signin": "~0.1.1"
+    "angular-directive.g-signin": "~0.1.1",
+    "angular-facebook": "0.2.3"
   },
   "resolutions": {
     "angular": "~1.4.0"

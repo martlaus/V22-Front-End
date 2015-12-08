@@ -7,7 +7,7 @@ angular.module('myApp.services.serverCallService', []).
 
             var instance;
             
-            return {
+            instance = {
                 makePost: function (url, data, successCallback, errorCallback) {
                     var headers = {};
                     var user = authenticatedUserService.getUser();
@@ -81,5 +81,7 @@ angular.module('myApp.services.serverCallService', []).
                         });
                 }
             };
+
+            return instance;
 
         }]);

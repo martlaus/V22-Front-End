@@ -29,15 +29,15 @@
                     </div>
 
                     <div class="col-sm-4 col-sm-push-4">
-                        <span class="btn btn-dark btn-lg btn-block" data-ng-if="true">
+                        <span class="btn btn-dark btn-lg btn-block" data-ng-if="!user.facebookID">
                             <span class="white">Link with Facebook</span>  <br/>
-                            <a class="btn btn-block btn-social btn-facebook">
+                            <a class="btn btn-block btn-social btn-facebook" data-ng-click="facebookAuth()">
                                 <span class="fa fa-facebook"></span> <span class="white">Logi sisse Facebookiga</span>
                             </a>
                         </span>
                     </div>
 
-                    <div class="col-sm-5 col-sm-push-3" >
+                    <div class="col-sm-5 col-sm-push-3" data-ng-if="user.facebookID">
                         <span class="white">Congratulations!</span>
                         <span class="btn btn-dark btn-lg btn-block">
                             <a class="btn btn-block btn-social btn-facebook">

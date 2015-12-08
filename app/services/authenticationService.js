@@ -158,6 +158,13 @@ angular.module('myApp.services.authenticationService', []).
                         "token": token
                     }
                     serverCallService.makeGet("rest/login/google", params, loginSuccess, loginFail);
+                },
+
+                loginWithFacebook : function(token) {
+                    var params = {
+                        "token": token
+                    }
+                    serverCallService.makeGet("rest/login/facebook", params, loginSuccess, loginFail);
                 }
 
             };
