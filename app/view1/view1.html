@@ -1,9 +1,9 @@
-<div class="container" data-ng-if="mobileIdChallenge">
+<div class="container col-md-3 col-md-push-4 login-box" data-ng-if="mobileIdChallenge">
     <div class="row">
-        <div class="col-md-6 text-right">
+        <div class="col-sm12 text-center">
             <img src="img/logo-mobiil-id.png">
         </div>
-        <div class="col-md-4">
+        <div class="col-sm12 text-center">
             <p class="lead">Mobile ID login code: <strong data-ng-bind="mobileIdChallenge"></strong></p>
 
             <p>Login sms</p>
@@ -11,62 +11,67 @@
     </div>
 </div>
 
-<div class="row" data-ng-if="!mobileIdChallenge">
-    <div class="col-md-12 text-center">
-        <h4> Choose login method</h4>
-    </div>
-</div>
+<div class="container col-md-3 col-md-push-4 vertical-center" data-ng-if="!mobileIdChallenge">
+    <div class="login-box">
 
-<div class="container" data-ng-if="!mobileIdChallenge">
-    <div class="row">
+        <div class="row">
+            <div class="col-sm12 text-center">
+                <h2><i class="fa fa-sign-in"></i> Log in</h2>
+            </div>
 
-        <div class="col-sm-3">
-            <span class="btn btn-dark btn-lg btn-block">
-                <!-- <i class="fa fa-google-plus"></i> Google login <br /> -->
-                <google-plus-signin clientid="{{googleClientID}}"></google-plus-signin>
-            </span>
-        </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="col-sm-8 col-sm-push-2">
+                        <div class="form-group" data-ng-class="{'has-error': validation.error.idCode}">
+                            <input type="text" class="form-control" id="idCode" data-ng-model="mobileId.idCode"
+                                   placeholder="Personal code" data-input-pattern="[^0-9]+" data-input-value-control
+                                   maxlength="11">
 
-        <div class="col-sm-3">
-            <a class="btn btn-dark btn-lg btn-block">
-                <i class="fa fa-facebook-square"></i>Facebook login
-            </a>
-        </div>
-
-        <div class="col-sm-3">
-            <a class="btn btn-dark btn-lg btn-block" data-ng-click="idCardAuth()">
-                <img src="img/id-kaart.png" style="width: 30px; height: auto"> ID card login
-            </a>
-        </div>
-
-        <div class="col-sm-3">
-            <div class="form-group" data-ng-class="{'has-error': validation.error.idCode}">
-                <input type="text" class="form-control" id="idCode" data-ng-model="mobileId.idCode"
-                       placeholder="Personal code" data-input-pattern="[^0-9]+" data-input-value-control
-                       maxlength="11">
-
-                <div>
+                            <div>
                     <span data-ng-if="validation.error.idCode === 'required'" class="help-block text-left"
                           data-translate="Personal code required"></span>
                     <span data-ng-if="validation.error.idCode === 'invalid'" class="help-block text-left"
                           data-translate="Personal code invalid"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" id="phoneNumber" data-ng-model="mobileId.phoneNumber"
-                       placeholder="+372 XX XXX XXX" data-input-pattern="[^0-9+]+" data-input-value-control>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="phoneNumber"
+                                   data-ng-model="mobileId.phoneNumber"
+                                   placeholder="+372 XX XXX XXX" data-input-pattern="[^0-9+]+" data-input-value-control>
 
-                <div>
+                            <div>
                     <span data-ng-if="validation.error.phoneNumber === 'required'" class="help-block text-left"
                           data-translate="Phone nr required"></span>
                     <span data-ng-if="validation.error.phoneNumber === 'notEstonian'" class="help-block text-left"
                           data-translate="Phone nr is not Estonian"></span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-success text-center" data-ng-click="mobileIdAuth()"
+                                style="display: block; width: 100%;">
+                            Mobiil-ID
+                        </button>
+                        <button class="btn btn-success text-center" data-ng-click="idCardAuth()"
+                                style="display: block; width: 100%;">
+                            ID card
+                        </button>
+                    </div>
                 </div>
             </div>
-            <a class="btn btn-dark btn-lg btn-block" data-ng-click="mobileIdAuth()">
-                <img src="img/logo-mobiil-id.png"> MobileID login
-            </a>
-        </div>
 
+            <div class="col-sm-12">
+                <a class="btn btn-dark btn-lg btn-block">
+                    <i class="fa fa-facebook-square"></i> Facebook
+                </a>
+            </div>
+
+            <div class="col-sm-12">
+            <span class="btn btn-dark btn-lg btn-block">
+                <!-- <i class="fa fa-google-plus"></i> Google login <br /> -->
+                <google-plus-signin clientid="{{googleClientID}}"></google-plus-signin>
+            </span>
+            </div>
+        </div>
     </div>
 </div>
+
