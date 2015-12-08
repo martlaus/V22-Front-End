@@ -1,40 +1,50 @@
-<div class="row">
-    <div class="col-md-12 text-center" data-ng-if="user">
-        <h4> Welcome, {{user.username}}! (<a href="" data-ng-click="logout()">log out</a>)</h4>
-    </div>
-     <div class="col-md-12 text-center" data-ng-if="!user">
-        <h4> You are not logged in, <a href="" data-ng-click="goToLandingPage()"> go back</a>.</h4>
+<div class="container col-md-8 col-md-push-2 vertical-center">
+    <div class="login-box col-md-12">
+        <div class="row">
+            <div class="col-md-12 text-center" data-ng-if="user">
+                <h4 class="white"> Welcome, {{user.username}}! (<a href="" data-ng-click="logout()">log out</a>)</h4>
+            </div>
+            <div class="col-md-12 text-center" data-ng-if="!user">
+                <h4 class="white"> You are not logged in, <a href="" data-ng-click="goToLandingPage()"> go back</a>.
+                </h4>
+            </div>
+        </div>
+
+        <div class="container" data-ng-if="user">
+            <div class="row">
+                <div class="col-sm12 text-center">
+
+                    <div class="col-sm-3 col-sm-push-1" data-ng-if="!user.googleID">
+                        <span class="btn btn-dark btn-lg btn-block">
+                            <i class="fa fa-google-plus"></i> <span class="white">Link with Google</span>  <br/>
+                            <google-plus-signin clientid="{{googleClientID}}"></google-plus-signin>
+                        </span>
+                    </div>
+
+                    <div class="col-sm-3 col-sm-push-1" data-ng-if="user.googleID">
+                        <a class="btn btn-dark btn-lg btn-block">
+                            <i class="fa fa-google-plus"></i><span class="white"> You have linked with Google</span>
+                        </a>
+                    </div>
+
+                    <div class="col-sm-3 col-sm-push-1">
+                        <span class="btn btn-dark btn-lg btn-block">
+                            <span class="white">Link with Facebook</span>  <br/>
+                            <a class="btn btn-block btn-social btn-facebook">
+                                <span class="fa fa-facebook"></span> <span class="white">Logi sisse Facebookiga</span>
+                            </a>
+                        </span>
+                    </div>
+
+                    <div class="col-sm-3 col-sm-push-1" data-ng-if="false">
+                        <a class="btn btn-dark btn-lg btn-block">
+                            <i class="fa fa-facebook-square"></i><span
+                                class="white">You have linked with Facebook</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="container" data-ng-if="user">
-    <div class="row">
-
-        <div class="col-sm-6" data-ng-if="!user.googleID">
-            <span class="btn btn-dark btn-lg btn-block">
-                <i class="fa fa-google-plus"></i> Link with Google <br />
-                <google-plus-signin clientid="{{googleClientID}}"></google-plus-signin>
-            </span>
-            
-        </div>
-
-        <div class="col-sm-6" data-ng-if="user.googleID">
-            <a class="btn btn-dark btn-lg btn-block">
-                <i class="fa fa-google-plus"></i> You have linked with Google
-            </a>
-        </div>
-
-        <div class="col-sm-6">
-            <a class="btn btn-dark btn-lg btn-block">
-                <i class="fa fa-facebook-square"></i>Link with Facebook
-            </a>
-        </div>
-
-        <div class="col-sm-6" data-ng-if="false">
-            <a class="btn btn-dark btn-lg btn-block">
-                <i class="fa fa-facebook-square"></i>You have linked with Facebook
-            </a>
-        </div>
-
-    </div>
-</div>
