@@ -1,14 +1,19 @@
 /* app css stylesheet */
 
 .login-box {
-  border-radius: 25px;
-  background-color: #eaeae1;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .vertical-center {
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
+    min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
 
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
+}
+
+body {
+    background-size: 100%;
+    background-image: url("img/back.jpg");
 }
