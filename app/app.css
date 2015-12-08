@@ -2,7 +2,7 @@
 
 .login-box {
     border-radius: 25px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(30, 30, 30, 0.5);
 }
 
 .vertical-center {
@@ -16,4 +16,39 @@
 body {
     background-size: 100%;
     background-image: url("img/back.jpg");
+}
+
+.divider {
+    width: 500px;
+    text-align: center;
+    padding-top: 20px;
+    padding-right: 30px;
+}
+
+.divider hr {
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+.white-or {
+    color: white;
+}
+
+.divider2 {
+    padding-left: 40px;
+    padding-right: 35px;
+    width: 100%
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.white {
+    color: white;
 }
