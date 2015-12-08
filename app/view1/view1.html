@@ -1,20 +1,23 @@
-<div class="container col-md-3 col-md-push-4 login-box" data-ng-if="mobileIdChallenge">
-    <div class="row">
-        <div class="col-sm12 text-center">
-            <img src="img/logo-mobiil-id.png">
-        </div>
-        <div class="col-sm12 text-center">
-            <p class="lead">Mobile ID login code: <strong data-ng-bind="mobileIdChallenge"></strong></p>
+<div class="container col-md-4 col-md-push-4 vertical-center" data-ng-if="mobileIdChallenge">
+    <div class="login-box">
+        <div class="row">
 
-            <p>Login sms</p>
+            <div class="col-sm12 text-center">
+                <img src="img/logo-mobiil-id.png">
+            </div>
+            <div class="col-sm12 text-center">
+                <p class="lead">Mobile ID login code: <strong data-ng-bind="mobileIdChallenge"></strong></p>
+
+                <p>Login sms</p>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="login container col-md-4 col-md-push-4 vertical-center" data-ng-if="!mobileIdChallenge">
+<div class="container col-md-4 col-md-push-4 vertical-center" data-ng-if="!mobileIdChallenge">
     <div class="login-box">
-
         <div class="row">
+
             <div class="col-sm12 text-center">
                 <h2 class="white"><i class="fa fa-sign-in"></i> Logi sisse</h2>
             </div>
@@ -73,9 +76,9 @@
             </div>
 
 
-            <div class="col-sm-12">
-                <a class="btn btn-dark btn-lg btn-block">
-                    <i class="fa fa-facebook-square"></i> Logi sisse Facebookiga
+            <div class="col-sm-6 col-sm-push-3">
+                <a class="btn btn-block btn-social btn-facebook">
+                    <span class="fa fa-facebook"></span> Logi sisse Facebookiga
                 </a>
             </div>
 
