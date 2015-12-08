@@ -119,12 +119,6 @@ angular.module('myApp.services.authenticationService', []).
                     disableLogin();
                     serverCallService.makeGet("rest/login/idCard", {}, loginSuccess, loginFail);
                 }, 
-
-                loginWithTaat : function() {
-                    localStorage.removeItem(LOGIN_ORIGIN);
-                    localStorage.setItem(LOGIN_ORIGIN, $location.url());
-                    window.location = "/rest/login/taat";
-                },
                 
                 authenticateUsingOAuth : function(token) {
                 	var params = {

@@ -9,36 +9,37 @@ angular.module('myApp.view2', ['ngRoute'])
         });
     }])
 
-	.controller('View2Ctrl', ['$scope', '$location', 'authenticatedUserService', 'authenticationService', 'serverCallService', 'Facebook', 
-		function($scope, $location, authenticatedUserService, authenticationService, serverCallService, Facebook) {
+    .controller('View2Ctrl', ['$scope', '$location', 'authenticatedUserService', 'authenticationService', 'serverCallService', 'Facebook', 
+        function($scope, $location, authenticatedUserService, authenticationService, serverCallService, Facebook) {
 
-			$scope.user = authenticatedUserService.getUser();
-			$scope.googleClientID = authenticationService.getGoogleClientID();
+            $scope.user = authenticatedUserService.getUser();
+            $scope.googleClientID = authenticationService.getGoogleClientID();
 
-			$scope.logout = function() {
-				authenticationService.logout();
-				$location.url('/');
-			}
+            $scope.logout = function() {
+                authenticationService.logout();
+                $location.url('/');
+            }
 
-			$scope.goToLandingPage = function() {
-				$location.url('/');
-			}
+            $scope.goToLandingPage = function() {
+                $location.url('/');
+            }
 
 
-			$scope.$on('event:google-plus-signin-success', function (event,authResult) {
-			    console.log('Google sign-in successful. ');
-			    serverCallService.makePost("rest/link/google?token=" + authResult.id_token, {}, googleLinkingSuccess, googleLinkingFail);
-			});
+            // Google linking
+            $scope.$on('event:google-plus-signin-success', function (event,authResult) {
+                console.log('Google sign-in successful. ');
+                serverCallService.makePost("rest/link/google?token=" + authResult.id_token, {}, googleLinkingSuccess, googleLinkingFail);
+            });
 
-			$scope.$on('event:google-plus-signin-failure', function (event,authResult) {
-			    console.log('Google sign-in failed or sign-out detected. ');
-			});
+            $scope.$on('event:google-plus-signin-failure', function (event,authResult) {
+                console.log('Google sign-in failed or sign-out detected. ');
+            });
 
             function googleLinkingSuccess(data) {
                 if (data === undefined) {
                     console.log('No data returned when linking google account.');
                 } else {
-                	authenticatedUserService.setAuthenticatedUser(data);
+                    authenticatedUserService.setAuthenticatedUser(data);
                     $scope.user = data.user;
                 }
             }
@@ -48,40 +49,41 @@ angular.module('myApp.view2', ['ngRoute'])
             }
 
 
+            // Facebook linking
             $scope.facebookAuth = function() {
-				// From now on you can use the Facebook service just as Facebook api says
-				Facebook.login(function(response) {
-					console.log('Login done.');
-					console.log(response);
+                // From now on you can use the Facebook service just as Facebook api says
+                Facebook.login(function(response) {
+                    console.log('Login done.');
+                    console.log(response);
 
-					serverCallService.makePost("rest/link/facebook?token=" + response.authResponse.accessToken, {}, facebookLinkingSuccess, facebookLinkingFail);
-				});
-		    };
+                    serverCallService.makePost("rest/link/facebook?token=" + response.authResponse.accessToken, {}, facebookLinkingSuccess, facebookLinkingFail);
+                });
+            };
 
-		    $scope.getLoginStatus = function() {
-				Facebook.getLoginStatus(function(response) {
-					if(response.status === 'connected') {
-						$scope.loggedIn = true;
-						console.log('connected');
-					} else {
-						$scope.loggedIn = false;
-						console.log('not connected');
-					}
-				});
-		    };
+            $scope.getLoginStatus = function() {
+                Facebook.getLoginStatus(function(response) {
+                    if(response.status === 'connected') {
+                        $scope.loggedIn = true;
+                        console.log('connected');
+                    } else {
+                        $scope.loggedIn = false;
+                        console.log('not connected');
+                    }
+                });
+            };
 
-		    $scope.me = function() {
-				Facebook.api('/me', function(response) {
-					$scope.user = response;
-					console.log('user');
-				});
-		    };
+            $scope.me = function() {
+                Facebook.api('/me', function(response) {
+                    $scope.user = response;
+                    console.log('user');
+                });
+            };
 
-		    function facebookLinkingSuccess(data) {
+            function facebookLinkingSuccess(data) {
                 if (data === undefined) {
                     console.log('No data returned when linking facebook account.');
                 } else {
-                	authenticatedUserService.setAuthenticatedUser(data);
+                    authenticatedUserService.setAuthenticatedUser(data);
                     $scope.user = data.user;
                     console.log('Facebook linked.')
                 }
@@ -91,4 +93,4 @@ angular.module('myApp.view2', ['ngRoute'])
                 console.log('Facebook linking failed.');
             }
 
-	}]);
+    }]);

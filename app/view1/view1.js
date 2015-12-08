@@ -18,6 +18,7 @@ angular.module('myApp.view1', ['ngRoute'])
             };
             $scope.mobileIdChallenge = false;
 
+            // Google authentication
             $scope.googleClientID = authenticationService.getGoogleClientID();
 
             $scope.$on('event:google-plus-signin-success', function (event,authResult) {
@@ -32,7 +33,6 @@ angular.module('myApp.view1', ['ngRoute'])
             $scope.idCardAuth = function() {
                 authenticationService.loginWithIdCard();
             };
-
 
             $scope.mobileIdAuth = function() {
                 var idCodeValid = validateIdCode();
@@ -149,6 +149,7 @@ angular.module('myApp.view1', ['ngRoute'])
             }
 
 
+            // Facebook authentication
             $scope.facebookAuth = function() {
                 // From now on you can use the Facebook service just as Facebook api says
                 Facebook.login(function(response) {
