@@ -48,7 +48,7 @@ angular.module('myApp.view2', ['ngRoute'])
             }
 
 
-            $scope.login = function() {
+            $scope.facebookAuth = function() {
 				// From now on you can use the Facebook service just as Facebook api says
 				Facebook.login(function(response) {
 					console.log('Login done.');
